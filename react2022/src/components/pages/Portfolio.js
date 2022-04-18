@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../includes/Header";
-import Contents from "../includes/Contents";
-import ConTitle from "../includes/ConTitle";
+import Header from "../layout/Header";
+import Contents from "../layout/Contents";
+import Title from "../layout/Title";
 import PortCont from "../includes/PortCont";
-import ContContact from "../includes/ContContact";
-import Footer from "../includes/Footer";
+import Contact from "../layout/Contact";
+import Footer from "../layout/Footer";
 
 
 function Portfolio(){
@@ -12,9 +12,9 @@ function Portfolio(){
         <>
             <Header />
             <Contents>
-                <ConTitle title={["portfolio", "site"]}/>
+                <Title title={["portfolio", "site"]}/>
                 <PortCont />
-                <ContContact />
+                <Contact />
             </Contents>
             <Footer />
         </>

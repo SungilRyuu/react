@@ -1,7 +1,10 @@
 import React from "react";
-import Header from "../includes/Header";
-import Contents from "../includes/Contents";
-import Footer from "../includes/Footer";
+import Header from "../layout/Header";
+import Contents from "../layout/Contents";
+import Title from "../layout/Title";
+import ScriptCont from "../includes/ScriptCont";
+import Contact from "../layout/Contact";
+import Footer from "../layout/Footer";
 
 
 function Script(){
@@ -9,11 +12,9 @@ function Script(){
         <>
             <Header />
             <Contents>
-                <section className="script__cont">
-                    <div className="script__inner">
-                        <div>Script</div>
-                    </div>
-                </section>
+                <Title title={["Script", "javascript"]} />
+                <ScriptCont />
+                <Contact />
             </Contents>
             <Footer />
         </>
