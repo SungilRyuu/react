@@ -35,6 +35,12 @@
     }
 }
 
+// 타이틀 애니메이션
+.cont__title {
+    opacity: 0;
+    transform: translateX(100px) translateY(100px);
+}
+
 //cont__contact
 .cont__contact {
     height: 100vh;

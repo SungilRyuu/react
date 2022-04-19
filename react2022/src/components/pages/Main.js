@@ -4,7 +4,7 @@ import Contents from "../layout/Contents";
 import MainCont from "../includes/MainCont";
 import Loading from "../basics/Loading";
 import Footer from "../layout/Footer";
-// import {gsap} from "gsap";
+import {gsap} from "gsap";
 
 // function Main(){
 //     return (
@@ -25,17 +25,73 @@ class Main extends React.Component {
     state = {
         isLoading: true,
     }
-    
-    mainAnimation = () => {
-      gsap.set(".main__inner", {opacity: 0})
+
+    getSite = () => {
+      setTimeout(() => {
+        gsap.to("#header", {
+          duration:0.2, 
+          top: 0, 
+          ease: "sine.out"
+        });
+        gsap.to("#footer", {
+          duration:0.6, 
+          bottom: 0,
+          ease: "sine.out"
+        });
+        gsap.to(".main__inner > div:nth-child(1)", {
+          duration:0.4, 
+          y: 0,
+          opacity: 1, 
+          delay: 1,
+          ease:"back.out(1.7)"
+        });
+        gsap.to(".main__inner > div:nth-child(2)", {
+          duration:0.4, 
+          y: 1,
+          opacity: 1, 
+          delay:1.3,
+          ease:"back.out(1.7)"
+        });
+        gsap.to(".main__inner > div:nth-child(3)", {
+          duration:0.4, 
+          y: 0,
+          opacity: 1, 
+          delay: 1.6,
+          ease:"back.out(1.7)"
+        });
+        gsap.to(".main__inner > div:nth-child(4)", {
+          duration:0.4, 
+          y: 0,
+          opacity: 1, 
+          delay: 1.9,
+          ease:"back.out(1.7)"
+        });
+
+      },1000)
     }
 
-    componentDidMount(){
-        setTimeout(() => {
-            this.setState({isLoading:false});
-            this.mainAnimation();
-        },3000);
-    }
+    getPorts = () => {
+      setTimeout( () => {
+          console.log("두 번째 시작");
+          this.setState({isLoading: false});
+          this.getSite();
+      }, 1600)
+  }
+
+  componentDidMount(){
+      setTimeout(() => {
+          console.log("첫 번째 시작");
+          document.getElementById("loading").classList.remove("loading__active")
+          this.getPorts();
+      },2000)
+  }
+
+    // componentDidMount(){
+    //     setTimeout(() => {
+    //         this.setState({isLoading:false});
+    //         this.getSite();
+    //     },5000);
+    // }
 
     render(){
         const {isLoading} = this.state;

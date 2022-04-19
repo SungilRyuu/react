@@ -9,6 +9,13 @@
     justify-content: space-between;
     margin-bottom: 100px;
 }
+
+// 애니메이션
+.port__inner {
+    opacity: 0;
+    transform: translateX(-200px);
+}
+
 .port__item {
     flex: 1 1 30%;
     margin: 1%;
