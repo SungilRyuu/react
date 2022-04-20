@@ -27,7 +27,7 @@ class Portfolio extends React.Component {
             bottom: 0,
             ease: "sine.out"
           });
-          gsap.to(".cont__title", {
+          gsap.to(".cont__title h1", {
               duration: 1,
               x: 0,
               y: 0,
@@ -62,6 +62,7 @@ class Portfolio extends React.Component {
         setTimeout(() => {
             console.log("첫 번째 시작");
             document.getElementById("loading").classList.remove("loading__active")
+            document.querySelector("body").style.background = "#000"
             this.getPorts();
         },2000)
     }

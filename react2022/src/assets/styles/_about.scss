@@ -75,3 +75,13 @@
         }
     }
 }
+
+// ABOUT 애니메이션
+.about__img {
+    opacity: 0;
+    transform: translateY(200px);
+}
+
+.about__txt {
+    opacity: 0;
+}

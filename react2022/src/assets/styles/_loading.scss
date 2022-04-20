@@ -1,6 +1,9 @@
 body {
     background: #000;
 }
+#loading {
+    background: var(--light_bg);
+}
 #loading.loading__active {
     opacity: 1;
     transition: all 1.6s;
@@ -43,5 +46,14 @@ body {
     }
     100% {
         filter: blur(4px);
+    }
+}
+
+// 로딩 라이트 버전
+#loading.light {
+    color: var(--black);
+    background: var(--light_bg);
+    .loading__text span {
+        color: var(--black);
     }
 }
