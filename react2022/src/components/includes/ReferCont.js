@@ -1,4 +1,21 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+function ReferInfo({id, title, desc}){
+  return(
+    <tr>
+      <td>{id}</td>
+      <td>{title}</td>
+      <td>
+        <Link to={{
+          pathname: "/refer-detail",
+          state: {id, title, desc},
+        }}>{desc.slice(0,180)}</Link>
+      </td>
+  </tr>
+  )
+}
+
 function referCont(props) {
   return (
     <section className={`refer__cont ${props.color}`}>
@@ -12,36 +29,15 @@ function referCont(props) {
               <col style={{width: "70%"}} />
             </colgroup>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>align-content</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>align-items</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>align-items</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>align-items</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>align-items</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>align-items</td>
-                <td>all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.</td>
-              </tr>
+              {props.refer.map(txt => (
+                <ReferInfo 
+                  key = {txt.id}
+                  id = {txt.id}
+                  title = {txt.title}
+                  desc = {txt.desc}
+                />
+              ))
+              }
             </tbody>
           </table>
         </div>

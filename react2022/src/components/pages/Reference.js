@@ -6,6 +6,7 @@ import ReferCont from "../includes/ReferCont";
 import Footer from "../layout/Footer";
 import Loading from "../basics/Loading";
 import {gsap} from "gsap";
+import axios from "axios";
 
 
 
@@ -13,6 +14,7 @@ import {gsap} from "gsap";
 class Reference extends React.Component {
     state = {
         isLoading: true,
+        refers: []
     }
 
     getSite = () => {
@@ -54,10 +56,14 @@ class Reference extends React.Component {
         },)
     }
 
-    getAbout = () => {
+    getAbout = async () => {
+        const {data: {data: {refer}}} = await axios.get("https://sungilryuu.github.io/react/react2022/src/assets/json/reference.json");
+
+        this.setState({refers: refer})
+
         setTimeout(() => {
             console.log("두 번째 시작");
-            this.setState({isLoading: false});
+            this.setState({isLoading: false, refers:refer});
             this.getSite();
         }, 1000)
     }
@@ -72,21 +78,22 @@ class Reference extends React.Component {
     }
 
     render(){
-        const {isLoading} = this.state;
+        const {isLoading, refers} = this.state;
 
+        console.log(refers)
         return (
             <>
                 {isLoading ? (
                 <Loading color="light" />
-                ):(<>
-                    <Header color="light"/>
-                    <Contents>
-                        <Title title={[ "REFERENCE", "book"]} color="light" />
-                        <ReferCont color="light" />
-                    </Contents>
-                    <Footer  color="light"/>
-                </>
-                )
+                    ):(<>
+                        <Header color="light"/>
+                        <Contents>
+                            <Title title={[ "REFERENCE", "book"]} color="light" />
+                            <ReferCont color="light" refer={refers} />
+                        </Contents>
+                        <Footer  color="light"/>
+                    </>
+                    )
                 }
             </>
         )
