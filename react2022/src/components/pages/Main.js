@@ -39,35 +39,35 @@ class Main extends React.Component {
           ease: "sine.out"
         });
         gsap.to(".main__inner > div:nth-child(1)", {
-          duration:0.4, 
+          duration:0.7, 
           y: 0,
           opacity: 1, 
           delay: 1,
           ease:"back.out(1.7)"
         });
         gsap.to(".main__inner > div:nth-child(2)", {
-          duration:0.4, 
+          duration:0.7, 
           y: 1,
           opacity: 1, 
           delay:1.3,
           ease:"back.out(1.7)"
         });
         gsap.to(".main__inner > div:nth-child(3)", {
-          duration:0.4, 
+          duration:0.7, 
           y: 0,
           opacity: 1, 
           delay: 1.6,
           ease:"back.out(1.7)"
         });
         gsap.to(".main__inner > div:nth-child(4)", {
-          duration:0.4, 
+          duration:0.7, 
           y: 0,
           opacity: 1, 
           delay: 1.9,
           ease:"back.out(1.7)"
         });
 
-      },1000)
+      },)
     }
 
     getPorts = () => {
@@ -75,7 +75,7 @@ class Main extends React.Component {
           console.log("두 번째 시작");
           this.setState({isLoading: false});
           this.getSite();
-      }, 1600)
+      }, 1000)
   }
 
   componentDidMount(){
@@ -83,7 +83,7 @@ class Main extends React.Component {
           console.log("첫 번째 시작");
           document.getElementById("loading").classList.remove("loading__active")
           this.getPorts();
-      },2000)
+      },1000)
   }
 
     // componentDidMount(){

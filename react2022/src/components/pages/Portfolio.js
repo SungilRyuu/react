@@ -7,10 +7,12 @@ import Contact from "../layout/Contact";
 import Footer from "../layout/Footer";
 import Loading from "../basics/Loading";
 import {gsap} from "gsap";
+import axios from "axios";
 
 class Portfolio extends React.Component {
     state = {
         isLoading: true,
+        ports: [],
     }
 
     mainAnimation = () => {
@@ -44,7 +46,11 @@ class Portfolio extends React.Component {
         })
     }
 
-    getPorts = () => {
+    getPorts = async () => {
+        const {data: {data: {ports}}} = await axios.get("https://webstoryboy.github.io/dothome1/portfolio.json"); 
+
+        this.setState({ports : ports})
+
         setTimeout( () => {
             console.log("두 번째 시작");
             this.setState({isLoading: false});
@@ -61,8 +67,9 @@ class Portfolio extends React.Component {
     }
 
     render(){
-        const {isLoading} = this.state;
+        const {isLoading, ports} = this.state;
         
+        // console.log(ports)
         return (
             <>
                 {isLoading ? (
@@ -72,7 +79,7 @@ class Portfolio extends React.Component {
                             <Header />
                             <Contents>
                                 <Title title={["portfolio", "site"]}/>
-                                <PortCont />
+                                <PortCont port = {ports} />
                                 <Contact />
                             </Contents>
                             <Footer />
